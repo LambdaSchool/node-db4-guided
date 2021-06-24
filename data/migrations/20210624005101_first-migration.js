@@ -28,13 +28,19 @@ exports.up = function(knex) {
             .references("zoo_id")
             .inTable("zoos")
             .onDelete("CASCADE")
+        tbl.integer("animal_id")
+            .unsigned()
+            .notNullable()
+            .references("animal_id")
+            .inTable("animals")
+            .onDelete("CASCADE")
     })
 };
 
 exports.down = function(knex) {
     return knex.schema
     .dropTableIfExists()
-    .dropTableIfExists()
+    .dropTableIfExists("animals")
     .dropTableIfExists("species")
     .dropTableIfExists("zoos")
 };
