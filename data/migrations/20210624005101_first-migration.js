@@ -4,6 +4,7 @@ exports.up = function(knex) {
     .createTable("zoos", tbl=>{
         tbl.increments("zoo_id")
         tbl.string("zoo_name",128).notNullable()
+        tbl.string("address",128).notNullable().unique()
     })
     .createTable()
     .createTable()
