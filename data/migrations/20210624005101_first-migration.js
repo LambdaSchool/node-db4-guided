@@ -20,7 +20,15 @@ exports.up = function(knex) {
             .inTable("species")
             .onDelete("CASCADE")
     })
-    .createTable()
+    .createTable("zoo_animals", tbl=>{
+        tbl.increments("zoo_animals_id")
+        tbl.integer("zoo_id")
+            .unsigned()
+            .notNullable()
+            .references("zoo_id")
+            .inTable("zoos")
+            .onDelete("CASCADE")
+    })
 };
 
 exports.down = function(knex) {
